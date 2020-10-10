@@ -1,13 +1,13 @@
-import _ from "lodash";
-import printMe from "./print.js";
+import _ from 'lodash';
+import printMe from './print.js';
 
 function component() {
-  const element = document.createElement("div");
-  const btn = document.createElement("button");
+  const element = document.createElement('div');
+  const btn = document.createElement('button');
 
-  element.innerHTML = _.join(["Hello", "webpack"], " ");
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-  btn.innerHTML = "点击这里，然后查看 console！";
+  btn.innerHTML = '点击这里，然后查看 console！';
   btn.onclick = printMe;
 
   element.append(btn);
