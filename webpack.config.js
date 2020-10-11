@@ -5,15 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    index: {
-      import: './src/index.js',
-      dependOn: 'shared',
-    },
-    another: {
-      import: './src/another-module.js',
-      dependOn: 'shared',
-    },
-    shared: 'lodash',
+    index: './src/index.js',
   },
   devtool: 'inline-cheap-source-map',
   devServer: {
@@ -29,12 +21,8 @@ module.exports = {
   ],
   output: {
     filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
   },
 };

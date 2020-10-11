@@ -1,18 +1,15 @@
-import _ from 'lodash';
-import printMe from './print.js';
+function getComponent() {
+  return import(/* webpackChunkName: "lodash" */ 'lodash')
+    .then(({ default: _ }) => {
+      const element = document.createElement('div');
 
-function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
+      element.innerHTML = _.join(['hello', 'webpack'], ' ');
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-  btn.innerHTML = '点击这里，然后查看 console！';
-  btn.onclick = printMe;
-
-  element.append(btn);
-
-  return element;
+      return element;
+    })
+    .catch((error) => 'An error occurred while loading the component');
 }
 
-document.body.append(component());
+getComponent().then((component) => {
+  document.body.append(component);
+});
